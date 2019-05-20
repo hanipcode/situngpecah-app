@@ -36,8 +36,7 @@ class App extends React.Component {
   onInput() {
     const validatedInput = validateInput(this.state.ammountText);
     if (validatedInput === null) {
-      this.setState({ error: true });
-      this.setState({ isErrorShake: true }, () => {
+      this.setState({ isErrorShake: true, isError: true }, () => {
         setTimeout(() => {
           this.setState({ isErrorShake: false });
         }, 500);
@@ -79,7 +78,7 @@ class App extends React.Component {
           <div
             className={cx("input-group", {
               ["border border-danger rounded"]: isError,
-              [styles.isErrorShake]: isErrorShake
+              [styles.errorShake]: isErrorShake
             })}
           >
             <div className="input-group-prepend">
